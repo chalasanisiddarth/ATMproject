@@ -2,6 +2,7 @@ package sidhu.ATM;
 import java.util.*;
 public class Admin extends Accounts {
     Scanner sc = new Scanner(System.in);
+    int st=0;
 
     void StartATM(){
         System.out.println("ATM Menu:");
@@ -16,7 +17,7 @@ public class Admin extends Accounts {
     }
     
     void LoginMenu(int pin){
-        System.out.println("1.Deposit Money\n2.Withdraw Money\n3.Reset pin\n4.Check Account Balance\n5.Logout");
+        System.out.println("1.Deposit Money\n2.Withdraw Money\n3.Reset pin\n4.Check Account Balance\n5.Mini Statement\n6.Logout");
         int input=sc.nextInt();
         if (input==1){
             System.out.println("Enter Amount:");
@@ -36,6 +37,15 @@ public class Admin extends Accounts {
         else if (input==4){
             System.out.println("Balance:"+GetBalance(pin)+"\n\n");
             LoginMenu(pin);
+        }
+        else if(input==5){
+            System.out.println("\nMini Statement:");
+            for (int i=0;i<st;i++){
+                System.out.println((i+1)+"."+statements[i]); 
+            }
+            System.out.print("\n\n");
+            LoginMenu(pin);
+            
         }
         else{
             System.out.println("Thank You!");
@@ -80,6 +90,8 @@ public class Admin extends Accounts {
                 balances[i]+=amount;
             }
         }
+        statements[st]="Deposited "+amount;
+        st++;
         System.out.println("Closing Balance:"+GetBalance(pin)+"\n\n");
         LoginMenu(pin);
     }
@@ -88,6 +100,8 @@ public class Admin extends Accounts {
             if(pins[i]==pin){
                 if (balances[i]>=amount){
                     balances[i]-=amount;
+                    statements[st]="Withdrew "+amount;
+                    st++;
                     System.out.println("Closing Balance:"+GetBalance(pin)+"\n\n");
                     LoginMenu(pin);
                 }
@@ -113,3 +127,4 @@ public class Admin extends Accounts {
     public static void main(String args[]){
     }
 }
+
