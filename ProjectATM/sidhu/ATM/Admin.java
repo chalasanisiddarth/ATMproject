@@ -40,9 +40,15 @@ public class Admin extends Accounts {
         }
         else if(input==5){
             System.out.println("\nMini Statement:");
-            for (int i=0;i<st;i++){
-                System.out.println((i+1)+"."+statements[i]); 
+            if(statements.length==0){
+                System.out.println("No transacrions.");
             }
+            else{
+                for (int i=0;i<st;i++){
+                    System.out.println((i+1)+"."+statements[i]); 
+                }
+            }
+            
             System.out.print("\n\n");
             LoginMenu(pin);
             
