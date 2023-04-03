@@ -41,7 +41,7 @@ public class Admin extends Accounts {
         else if(input==5){
             System.out.println("\nMini Statement:");
             if(statements.length==0){
-                System.out.println("No transacrions.");
+                System.out.println("No transactions.");
             }
             else{
                 for (int i=0;i<st;i++){
